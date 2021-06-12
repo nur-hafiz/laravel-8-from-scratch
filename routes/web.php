@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return Post::find('my-first-post');
+    return Post::find('my-first-post');
     return view('welcome');
 });
 
