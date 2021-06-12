@@ -8,9 +8,9 @@
             </h1>
 
             <p>
-                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                By <a href="#">{{ $post->user->name }}</a> in <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
             </p>
-
+    
             <div>
                 {{ $post->excerpt }}
             </div>

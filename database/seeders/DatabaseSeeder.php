@@ -17,44 +17,50 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
+        // User::truncate();
+        // Category::truncate();
+        // Post::truncate();
 
         $user = User::factory()->create();
 
-        $personal = Category::create([
-            'name' =>'Personal',
-            'slug' =>'personal'
+        Post::factory(5)->create([
+            'user_id' => $user->id
         ]);
 
-        $family = Category::create([
-            'name' =>'Family',
-            'slug' =>'family'
-        ]);
+        // $user = User::factory()->create();
 
-        $work = Category::create([
-            'name' =>'Work',
-            'slug' =>'work'
-        ]);
+        // $personal = Category::create([
+        //     'name' =>'Personal',
+        //     'slug' =>'personal'
+        // ]);
 
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $family->id,
-            'title' => 'My Family Post',
-            'slug' => 'my-family-post',
-            'excerpt' => 'My family excerpt',
-            'body' => '<p>My family bodey</p>',
-        ]);
+        // $family = Category::create([
+        //     'name' =>'Family',
+        //     'slug' =>'family'
+        // ]);
+
+        // $work = Category::create([
+        //     'name' =>'Work',
+        //     'slug' =>'work'
+        // ]);
+
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id' => $family->id,
+        //     'title' => 'My Family Post',
+        //     'slug' => 'my-family-post',
+        //     'excerpt' => 'My family excerpt',
+        //     'body' => '<p>My family bodey</p>',
+        // ]);
 
         
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $work->id,
-            'title' => 'My work Post',
-            'slug' => 'my-work-post',
-            'excerpt' => 'My work excerpt',
-            'body' => '<p>My work bodey</p>',
-        ]);
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id' => $work->id,
+        //     'title' => 'My work Post',
+        //     'slug' => 'my-work-post',
+        //     'excerpt' => 'My work excerpt',
+        //     'body' => '<p>My work bodey</p>',
+        // ]);
     }
 }
