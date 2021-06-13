@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/posts', function () {
     return view('posts', [
-        'posts' => Post::latest()->with('category')->get()
+        'posts' => Post::latest()->with('category' , 'user')->get()
         // If wanna order latest by pulished_at date
         // 'posts' => Post::latest('published_at')->with('category')->get()
     ]);
