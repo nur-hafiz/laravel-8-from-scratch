@@ -58,7 +58,7 @@ Route::get('/categories/{category}', function (Category $category) {
 });
 
 
-Route::get('/authors/{author}', function (User $author) {
+Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
         'posts' => $author->posts
     ]);
