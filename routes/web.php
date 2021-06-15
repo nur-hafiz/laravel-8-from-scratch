@@ -28,7 +28,7 @@ Route::get('/', function () {
         // If wanna order latest by pulished_at date
         // 'posts' => Post::latest('published_at')->with('category')->get()
     ]);
-});
+})->name('home');
 
 Route::get('/posts/{post:slug}', function (Post $post) {
     return view('post', [
@@ -60,7 +60,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
         // Without with property in Post model
         // 'posts' => $category->posts->load(['category', 'author'])
     ]);
-});
+})->name('category');
 
 
 Route::get('/authors/{author:username}', function (User $author) {
