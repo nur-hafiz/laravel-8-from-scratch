@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::latest()->get()
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
 
         // Without with property in Post model
         // 'posts' => Post::latest()->with('category' , 'author')->get()
@@ -52,7 +53,9 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'categories' => Category::all(),
+        'currentCategory' => $category
 
         // Without with property in Post model
         // 'posts' => $category->posts->load(['category', 'author'])
@@ -62,7 +65,8 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 
 Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
-        'posts' => $author->posts
+        'posts' => $author->posts,
+        'categories' => Category::all()
 
         // Without with property in Post model
         // 'posts' => $author->posts->load(['category', 'author'])
