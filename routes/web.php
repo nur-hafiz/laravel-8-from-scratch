@@ -3,6 +3,7 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,24 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('posts', [
-        'posts' => Post::latest()->get(),
-        'categories' => Category::all()
+Route::get('/', [PostController::class, 'index'])->name('home');
 
-        // Without with property in Post model
-        // 'posts' => Post::latest()->with('category' , 'author')->get()
-
-        // If wanna order latest by pulished_at date
-        // 'posts' => Post::latest('published_at')->with('category')->get()
-    ]);
-})->name('home');
-
-Route::get('/posts/{post:slug}', function (Post $post) {
-    return view('post', [
-        'post' => $post
-    ]);
-});
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 // Route::get('/posts/{post}', function ($id) {
 //     return view('post', [
